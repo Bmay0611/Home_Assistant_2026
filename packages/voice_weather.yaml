@@ -1,4 +1,4 @@
-script:
+﻿script:
   voice_weather_now:
     alias: Voice - Weather now
     mode: single
@@ -12,7 +12,6 @@ script:
             It is currently {{ cond }}, around {{ temp }} degrees,
             with humidity at {{ humidity }} percent
             and wind speed {{ wind }} miles per hour.
-      - service: tts.speak
+      - service: script.voice_reply
         data:
-          media_player_entity_id: media_player.home_assistant_voice_0994f1_media_player  # <-- REPLACE THIS
           message: "{{ msg }}"
