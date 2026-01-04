@@ -1,10 +1,9 @@
-﻿voice_assistant_query:
-  alias: "Voice Assistant Query"
+voice_assistant_query:
+  alias: Voice Assistant Query
   mode: single
   fields:
     query:
-      description: "Text to send to ChatGPT"
-      example: "What’s the weather on Tuesday?"
+      description: Text to send to ChatGPT
   sequence:
     - service: input_text.set_value
       target:
