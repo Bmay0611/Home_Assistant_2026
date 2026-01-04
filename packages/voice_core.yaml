@@ -1,4 +1,4 @@
-# Voice core helpers: centralized reply/playback and safe TTS fallback
+﻿# Voice core helpers: centralized reply/playback and safe TTS fallback
 #
 # Purpose:
 # - Provide a single script to speak short replies (voice_reply) that will route to
@@ -59,20 +59,17 @@ script:
             {% else %}
               {{ states('sensor.music_target_media_player') }}
             {% endif %}
-      - choose:
-          - conditions: "{{ (tgt | string) == 'media_player.living_room' }}"
-            sequence:
-              - service: script.speak_on_sonos
-                data:
-                  message: "{{ msg }}"
-        default:
-          - condition: template
-            value_template: "{{ (tgt | string) not in ['', 'unknown', 'unavailable', 'None'] }}"
-          - service: tts.google_translate_say
-            data:
-              entity_id: "{{ tgt }}"
-              message: "{{ msg }}"
-
+      - variables:
+          resolved_tgt: >-
+            {% if (tgt | string) in ['', 'unknown', 'unavailable', 'None'] %}
+              media_player.living_room
+            {% else %}
+              {{ tgt }}
+            {% endif %}
+      - service: tts.speak
+        data:
+          message: "{{ msg }}"
+          media_player_entity_id: "{{ resolved_tgt }}"
   voice_play_media:
     alias: Voice - Play media helper
     description: >-
@@ -140,8 +137,8 @@ automation:
 # to copy/paste into config if desired.
 #
 # Lutron Caseta (recommended): Use the Lutron Caseta integration from the
-# Home Assistant UI. If you have a Smart Bridge Pro, add it via Integrations →
-# Add Integration → Lutron Caseta. No long-term secrets go into YAML for this.
+# Home Assistant UI. If you have a Smart Bridge Pro, add it via Integrations â†’
+# Add Integration â†’ Lutron Caseta. No long-term secrets go into YAML for this.
 #
 # Z-Wave JS (Schlage locks): Use the Z-Wave JS add-on + integration and pair
 # your Schlage. Example start (do NOT paste API keys here):
@@ -165,7 +162,7 @@ automation:
 #
 # Apple Music: Home Assistant cannot stream Apple Music directly to arbitrary
 # devices. Recommended approaches:
-# - Use Sonos: Sonos supports Apple Music as a service inside Sonos — add Apple
+# - Use Sonos: Sonos supports Apple Music as a service inside Sonos â€” add Apple
 #   Music through the Sonos app and Sonos will then be able to play Apple Music
 #   playlists. You can control Sonos from HA, but the OAuth pairing for
 #   Apple Music is done inside Sonos app.
@@ -184,7 +181,7 @@ automation:
 #   fidelity TTS (Piper, ElevenLabs, or cloud TTS), we can update the voice_reply
 #   script to call the chosen service in one place.
 # - After adding this package, test:
-#   1) Developer Tools → States: set input_text.chatgpt_output to a test phrase.
+#   1) Developer Tools â†’ States: set input_text.chatgpt_output to a test phrase.
 #   2) Confirm Sonos plays the phrase (if your music zone resolves to Sonos)
 #
 # If you'd like, I can also propose a follow-up file that replaces google_translate
