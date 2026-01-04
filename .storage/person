@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "brandon",
+        "name": "Brandon",
+        "user_id": "7ca969ab2f444bbebe6816ed370f148e",
+        "device_trackers": [
+          "device_tracker.iphone_2",
+          "device_tracker.ipad_2"
+        ]
+      }
+    ]
+  }
+}

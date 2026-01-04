@@ -1,0 +1,379 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_home",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "header": {
+            "card": {
+              "type": "markdown",
+              "content": "# Hello {{ user }}\nWelcome to home",
+              "title": "Home"
+            }
+          },
+          "badges": [
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "light.basement_game_area_main_lights_1",
+              "name": "Basment Game Area",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "light.basement_game_area_main_lights_1",
+                  "state": "on"
+                }
+              ]
+            },
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "light.living_room_main_lights_1",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "light.living_room_main_lights_1",
+                  "state": "on"
+                }
+              ],
+              "name": "Living Room"
+            }
+          ],
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "heading": "AUDIO"
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "group": true,
+                  "artwork": "full-cover-fit",
+                  "source": "full",
+                  "sound_mode": "full",
+                  "entity": "media_player.core"
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.bath_room_dot",
+                  "group": true,
+                  "volume_stateless": false,
+                  "artwork": "full-cover-fit",
+                  "source": "full",
+                  "sound_mode": "full"
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.echo_hub",
+                  "artwork": "full-cover-fit",
+                  "source": "full",
+                  "sound_mode": "full",
+                  "group": true,
+                  "volume_stateless": false
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.patio",
+                  "artwork": "full-cover-fit",
+                  "source": "full",
+                  "sound_mode": "full",
+                  "group": true
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "group": true,
+                  "entity": "media_player.basement_echo",
+                  "artwork": "full-cover-fit",
+                  "source": "full",
+                  "sound_mode": "full"
+                },
+                {
+                  "type": "custom:mass-player-card",
+                  "entities": [
+                    "media_player.home_assistant_voice"
+                  ],
+                  "expressive_scheme": "content",
+                  "expressive": true
+                }
+              ],
+              "column_span": 3
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Living Room"
+                },
+                {
+                  "type": "tile",
+                  "entity": "media_player.living_room"
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "markdown",
+                      "content": "## 💬 Ask ChatGPT\n"
+                    },
+                    {
+                      "type": "entities",
+                      "entities": [
+                        "input_text.chatgpt_input",
+                        "input_text.chatgpt_output"
+                      ]
+                    },
+                    {
+                      "type": "button",
+                      "name": "Ask Now",
+                      "icon": "mdi:robot",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "script.voice_assistant_query"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "TV's",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": 27,
+                    "rows": 1
+                  }
+                },
+                {
+                  "type": "custom:firemote-card",
+                  "entity": "media_player.living_room_tv_2",
+                  "device_family": "amazon-fire",
+                  "device_type": "fire_tv_4_series",
+                  "compatibility_mode": "default",
+                  "app_launch_1": "netflix",
+                  "app_launch_2": "hulu",
+                  "app_launch_3": "paramount-plus",
+                  "app_launch_4": "youtube",
+                  "defaultRemoteStyle_override": ""
+                },
+                {
+                  "type": "custom:firemote-card",
+                  "entity": "media_player.bedroom_tv_2",
+                  "device_family": "amazon-fire",
+                  "device_type": "fire_tv_4_series",
+                  "compatibility_mode": "default"
+                }
+              ],
+              "column_span": 4
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Locks",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    "lock.j_series_by_schlage_z_wave_keypad_deadbolt",
+                    "lock.j_series_by_schlage_z_wave_keypad_deadbolt_2",
+                    "lock.side_door"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.ewelink_snzb_02p_humidity",
+                      "name": "Humidity"
+                    },
+                    {
+                      "entity": "sensor.ewelink_snzb_02p_temperature",
+                      "name": "Temperature"
+                    }
+                  ],
+                  "title": "eWeLink SNZB-02P"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "show_current": true,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.forecast_home",
+                  "forecast_type": "daily"
+                },
+                {
+                  "type": "custom:weather-radar-card"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.fire_tv_living_room",
+                  "name": "Living Room TV",
+                  "icon": "mdi:television",
+                  "artwork": "none",
+                  "group": false,
+                  "hide": {
+                    "progress": true,
+                    "shuffle": true,
+                    "repeat": true,
+                    "source": false,
+                    "power_state": false
+                  },
+                  "info": "short",
+                  "shortcuts": {
+                    "columns": 3,
+                    "buttons": [
+                      {
+                        "name": "Netflix",
+                        "type": "app",
+                        "id": "com.netflix.ninja"
+                      },
+                      {
+                        "name": "Prime",
+                        "type": "app",
+                        "id": "com.amazon.avod.thirdpartyclient"
+                      },
+                      {
+                        "name": "YouTube",
+                        "type": "app",
+                        "id": "com.google.android.youtube.tv"
+                      },
+                      {
+                        "name": "Hulu",
+                        "type": "app",
+                        "id": "com.hulu.plus"
+                      },
+                      {
+                        "name": "Disney+",
+                        "type": "app",
+                        "id": "com.disney.disneyplus"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.bedroom_tv_2",
+                  "group": false,
+                  "artwork": "full-cover-fit",
+                  "source": "full"
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.fire_tv_living_room",
+                  "name": "Living Room TV",
+                  "icon": "mdi:television",
+                  "artwork": "none",
+                  "group": false,
+                  "hide": {
+                    "progress": true,
+                    "shuffle": true,
+                    "repeat": true,
+                    "source": false,
+                    "power_state": false
+                  },
+                  "info": "short",
+                  "shortcuts": {
+                    "columns": 3,
+                    "buttons": [
+                      {
+                        "name": "Netflix",
+                        "type": "app",
+                        "id": "com.netflix.ninja"
+                      },
+                      {
+                        "name": "Prime",
+                        "type": "app",
+                        "id": "com.amazon.avod.thirdpartyclient"
+                      },
+                      {
+                        "name": "YouTube",
+                        "type": "app",
+                        "id": "com.google.android.youtube.tv"
+                      },
+                      {
+                        "name": "Hulu",
+                        "type": "app",
+                        "id": "com.hulu.plus"
+                      },
+                      {
+                        "name": "Disney+",
+                        "type": "app",
+                        "id": "com.disney.disneyplus"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.living_room_tv_2",
+                  "volume_stateless": true,
+                  "artwork": "full-cover-fit",
+                  "source": "full"
+                }
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.ewelink_snzb_02p_humidity",
+                  "name": "Humidity"
+                },
+                {
+                  "entity": "sensor.ewelink_snzb_02p_temperature",
+                  "name": "Temperature"
+                }
+              ],
+              "title": "eWeLink SNZB-02P"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

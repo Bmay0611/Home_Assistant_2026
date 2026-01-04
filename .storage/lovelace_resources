@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "699b1cf615e544adb77c82c272245a83",
+        "url": "/hacsfiles/weather-radar-card/weather-radar-card.js?hacstag=487680971210",
+        "type": "module"
+      },
+      {
+        "id": "3c4568d90eb34cbc9c54b2beb8140c7e",
+        "url": "/hacsfiles/clock-weather-card/clock-weather-card.js?hacstag=522634019292",
+        "type": "module"
+      },
+      {
+        "id": "995c8442d52c44459f54d100f5800564",
+        "url": "/hacsfiles/better-moment-card/better-moment-card.js?hacstag=73702818820250111",
+        "type": "module"
+      },
+      {
+        "id": "aa42067807074427bb87f30816d423fb",
+        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656419",
+        "type": "module"
+      },
+      {
+        "id": "662cb15d4b1945b6b913c3e67ff3fd3d",
+        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841161",
+        "type": "module"
+      },
+      {
+        "id": "c6f383c818ca4f44a74a84b43f8a7490",
+        "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=14852083811610",
+        "type": "module"
+      },
+      {
+        "id": "675c4e667f1c407a9e61ac00a0384f84",
+        "url": "/hacsfiles/mass-player-card/mass-player-card.js?hacstag=1043277514240",
+        "type": "module"
+      }
+    ]
+  }
+}

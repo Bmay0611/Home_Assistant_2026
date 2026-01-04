@@ -1,0 +1,78 @@
+# Home control bones: lights, lock-all scripts, and simple grouping for dashboard control.
+
+group:
+  all_dimmable_lights:
+    name: All dimmable lights (Caseta)
+    entities:
+      - light.basement_game_area_main_lights_1
+      - light.basement_game_area_main_lights_2
+      - light.basement_sitting_area_main_lights
+      - light.front_foyer_chandelier
+      - light.front_foyer_main_lights
+      - light.front_porch_overhead_light
+      - light.kitchen_main_lights
+      - light.living_room_main_lights_1
+      - light.living_room_main_lights_2
+      - light.master_bedroom_main_lights
+      - light.patio_lights
+      - light.stairs_main_lights
+      - light.studio_main_lights
+      - light.sunroom_main_lights
+
+  all_light_switches:
+    name: All on/off light switches (Caseta)
+    entities:
+      - switch.basement_stairs_main_lights
+      - switch.dining_room_chandelier
+      - switch.dining_room_main_lights
+      - switch.laundry_room_main_lights
+      - switch.master_bathroom_brandons_vanity_lights
+      - switch.master_bathroom_danielles_vanity_lights
+      - switch.master_bathroom_main_lights
+      - switch.studio_chandelier
+
+  all_locks:
+    name: All locks
+    entities:
+      - lock.side_door
+      - lock.j_series_by_schlage_z_wave_keypad_deadbolt_2
+      - lock.j_series_by_schlage_z_wave_keypad_deadbolt
+
+script:
+  lights_all_off:
+    alias: Lights - All off
+    mode: single
+    sequence:
+      - service: light.turn_off
+        target:
+          entity_id: group.all_dimmable_lights
+      - service: switch.turn_off
+        target:
+          entity_id: group.all_light_switches
+
+  lights_all_on:
+    alias: Lights - All on
+    mode: single
+    sequence:
+      - service: light.turn_on
+        target:
+          entity_id: group.all_dimmable_lights
+      - service: switch.turn_on
+        target:
+          entity_id: group.all_light_switches
+
+  lock_all_doors:
+    alias: Locks - Lock all doors
+    mode: single
+    sequence:
+      - service: lock.lock
+        target:
+          entity_id: group.all_locks
+
+  unlock_all_doors:
+    alias: Locks - Unlock all doors
+    mode: single
+    sequence:
+      - service: lock.unlock
+        target:
+          entity_id: group.all_locks

@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "minor_version": 2,
+  "key": "repairs.issue_registry",
+  "data": {
+    "issues": [
+      {
+        "created": "2025-03-16T02:48:12.651371+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_222687548_tags/v3.7.1"
+      },
+      {
+        "created": "2025-03-16T02:58:36.300890+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_657938356_tags/v1.2.1"
+      },
+      {
+        "created": "2025-03-16T02:59:57.885072+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_194140521_tags/v2.3.3"
+      },
+      {
+        "created": "2025-03-16T03:02:27.589379+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_312080478_tags/2025.1.1"
+      },
+      {
+        "created": "2025-04-03T13:25:34.878724+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_223993584_tags/13.1.0"
+      },
+      {
+        "created": "2025-05-06T19:13:20.511914+00:00",
+        "dismissed_version": null,
+        "domain": "homeassistant",
+        "is_persistent": false,
+        "issue_id": "config_entry_reauth_schlage_01JNMETV4DP22J2EE7X9HXHT40"
+      },
+      {
+        "created": "2025-12-28T15:02:10.063404+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_312080478_tags/2025.7.1"
+      },
+      {
+        "created": "2025-12-28T15:02:35.096759+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_223993584_tags/13.10.1"
+      },
+      {
+        "created": "2025-12-28T15:02:37.091997+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_263757123_tags/6.3"
+      },
+      {
+        "created": "2025-12-28T15:02:47.738907+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_222687548_tags/v3.8.0"
+      },
+      {
+        "created": "2025-12-28T15:03:10.050156+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_657938356_tags/v1.3.1"
+      },
+      {
+        "created": "2025-12-28T15:03:17.018942+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_194140521_tags/v2.6.4"
+      },
+      {
+        "created": "2026-01-01T01:13:31.743479+00:00",
+        "dismissed_version": null,
+        "domain": "hacs",
+        "is_persistent": false,
+        "issue_id": "restart_required_139664351_tags/v5.8.4"
+      },
+      {
+        "created": "2026-01-01T15:17:49.676241+00:00",
+        "dismissed_version": null,
+        "domain": "script",
+        "is_persistent": false,
+        "issue_id": "script.voice_assistant_query_validation_failed_sequence"
+      },
+      {
+        "created": "2026-01-03T23:16:35.356060+00:00",
+        "dismissed_version": null,
+        "domain": "script",
+        "is_persistent": false,
+        "issue_id": "script.voice_play_media_helper_validation_failed_schema"
+      }
+    ]
+  }
+}

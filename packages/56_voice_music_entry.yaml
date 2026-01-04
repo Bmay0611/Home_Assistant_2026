@@ -1,0 +1,21 @@
+script:
+  music_play_voice:
+    alias: Play Music
+    description: Voice entry point for music requests (stub until speakers are connected)
+    mode: restart
+    fields:
+      music:
+        description: Music to play (artist, genre, playlist)
+      area:
+        description: Area to play in
+    sequence:
+      - service: script.music_set_session
+        data:
+          query: "{{ music if music is defined and music else 'music' }}"
+          where: "{{ area if area is defined and area else 'Main' }}"
+      - service: tts.speak
+        data:
+          message: >-
+            I will play {{ music if music is defined and music else 'music' }}
+            {{ 'in the ' ~ area if area is defined and area else '' }}
+            once the speaker system is connected.

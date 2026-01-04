@@ -1,0 +1,15 @@
+intents:
+  PlayMusicOnSonos:
+    data:
+      - sentences:
+          - "play music"
+          - "resume music"
+          - "continue music"
+          - "start music"
+          - "play"
+  PauseMusicOnSonos:
+    data:
+      - sentences:
+          - "pause music"
+          - "stop music"
+          - "pause"

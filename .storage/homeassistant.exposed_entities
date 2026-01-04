@@ -1,0 +1,825 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "homeassistant.exposed_entities",
+  "data": {
+    "assistants": {
+      "cloud.alexa": {
+        "expose_new": true
+      },
+      "cloud.google_assistant": {
+        "expose_new": true
+      }
+    },
+    "exposed_entities": {
+      "conversation.home_assistant": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
+      },
+      "zone.home": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          },
+          "cloud.google_assistant": {
+            "should_expose": false
+          }
+        }
+      },
+      "sun.sun": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          },
+          "cloud.google_assistant": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.fire_tv_192_168_40_93": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "remote.fire_tv_192_168_40_93": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.firetv_aftdct31_television": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.firetv_aftdct31_mute": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "button.firetv_aftdct31_identify": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "update.home_assistant_connect_zbt_1_862a7f9c_firmware": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.living_room_motion_lights_on": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.lights_off": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.lights_on_off": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.test_lights_off": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "tag.bmay": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.light_on_presence": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.light_off_presence": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.test_home_notification": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "button.ewelink_snzb_02p_identify": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.ewelink_snzb_02p_battery": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.ewelink_snzb_02p_temperature": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.ewelink_snzb_02p_rssi": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.ewelink_snzb_02p_lqi": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.ewelink_snzb_02p_humidity": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "update.ewelink_snzb_02p_firmware": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.brandon_s_fire_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_fire_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.brandon_s_fire_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_fire_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_fire_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.brandon_s_3rd_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_3rd_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_3rd_tv_shuffle_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_3rd_tv_repeat_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.brandon_s_4th_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_4th_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_4th_tv_shuffle_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_4th_tv_repeat_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.brandon_s_4th_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_4th_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_4th_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.brandon_s_gm_in_vehicle_alexa": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_gm_in_vehicle_alexa_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_gm_in_vehicle_alexa_shuffle_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_gm_in_vehicle_alexa_repeat_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.brandon_s_gm_in_vehicle_alexa_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_gm_in_vehicle_alexa_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.danielle_s_fire_tv_stick": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.danielle_s_fire_tv_stick_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.danielle_s_fire_tv_stick_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_fire_tv_stick_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_fire_tv_stick_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.danielle_s_2nd_fire_tv_stick": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.danielle_s_2nd_fire_tv_stick_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_fire_tv_stick_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_fire_tv_stick_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_fire_tv_stick_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.work_out_room_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.work_out_room_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.work_out_room_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.work_out_room_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.work_out_room_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.danielle_s_2nd_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.danielle_s_2nd_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.danielle_s_2nd_tv_shuffle_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.danielle_s_2nd_tv_repeat_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.danielle_s_2nd_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.this_device_2": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.this_device_do_not_disturb_switch_2": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.this_device_next_alarm_2": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.this_device_next_timer_2": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.this_device_next_reminder_2": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.brandon_s_3rd_fire_tv": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.brandon_s_3rd_fire_tv_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_fire_tv_next_alarm": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_fire_tv_next_timer": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.brandon_s_3rd_fire_tv_next_reminder": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "switch.christmas_corgi": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.lamp_3": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.lamp_4": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.left_lamp": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.right_lamp": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.sunroom_lamp_1": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "light.sunroom_lamp_2": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": true
+          },
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "conversation.openai_conversation_2": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "ai_task.openai_ai_task_2": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "alarm_control_panel.unnamed_device": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          },
+          "cloud.google_assistant": {
+            "should_expose": false
+          }
+        }
+      },
+      "group.all_dimmable_lights": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          },
+          "conversation": {
+            "should_expose": false
+          },
+          "cloud.google_assistant": {
+            "should_expose": false
+          }
+        }
+      },
+      "group.all_light_switches": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": false
+          },
+          "conversation": {
+            "should_expose": false
+          },
+          "cloud.google_assistant": {
+            "should_expose": false
+          }
+        }
+      },
+      "media_player.everywhere": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.everywhere_do_not_disturb_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.everywhere_shuffle_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "switch.everywhere_repeat_switch": {
+        "assistants": {
+          "cloud.alexa": {
+            "should_expose": true
+          }
+        }
+      },
+      "group.core_speakers": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.chatgpt_webhook_handler": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.receive_chatgpt_response": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
+      }
+    }
+  }
+}

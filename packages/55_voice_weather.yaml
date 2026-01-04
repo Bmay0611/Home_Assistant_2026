@@ -1,0 +1,18 @@
+script:
+  voice_weather_now:
+    alias: Voice - Weather now
+    mode: single
+    sequence:
+      - variables:
+          temp: "{{ state_attr('weather.forecast_home', 'temperature') }}"
+          cond: "{{ states('weather.forecast_home') }}"
+          humidity: "{{ state_attr('weather.forecast_home', 'humidity') }}"
+          wind: "{{ state_attr('weather.forecast_home', 'wind_speed') }}"
+          msg: >-
+            It is currently {{ cond }}, around {{ temp }} degrees,
+            with humidity at {{ humidity }} percent
+            and wind speed {{ wind }} miles per hour.
+      - service: tts.speak
+        data:
+          media_player_entity_id: media_player.home_assistant_voice_0994f1_media_player  # <-- REPLACE THIS
+          message: "{{ msg }}"

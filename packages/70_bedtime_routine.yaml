@@ -1,0 +1,80 @@
+script:
+  going_to_bed:
+    description: "Night routine: lock doors, arm alarm (home), lights set for bed, TVs handled via Fire TV, Netflix launched in bedroom, then living room lights off after delay"
+    mode: restart
+    sequence:
+
+      # 1) Lock all doors
+      - service: lock.lock
+        target:
+          entity_id: group.all_locks
+
+      # 2) Arm alarm to Home (SimpliSafe)
+      - service: alarm_control_panel.alarm_arm_home
+        target:
+          entity_id: alarm_control_panel.alarm_control_panel
+        data:
+          code: "2174"
+
+      # 3) House lights off (baseline)
+      - service: light.turn_off
+        target:
+          entity_id: group.all_dimmable_lights
+
+      - service: switch.turn_off
+        target:
+          entity_id: group.all_light_switches
+
+      # 4) Bedtime lighting setup
+      # Living Room lights to 20%
+      - service: light.turn_on
+        target:
+          entity_id:
+            - light.living_room_main_lights_1
+            - light.living_room_main_lights_2
+        data:
+          brightness_pct: 20
+
+      # Bedroom lights to 20%
+      - service: light.turn_on
+        target:
+          entity_id: light.master_bedroom_main_lights
+        data:
+          brightness_pct: 20
+
+      # Master Bathroom lights ON (100%)
+      - service: switch.turn_on
+        target:
+          entity_id:
+            - switch.master_bathroom_main_lights
+            - switch.master_bathroom_brandons_vanity_lights
+            - switch.master_bathroom_danielles_vanity_lights
+
+      # 5) TVs (Fire TV entities)
+      # Living Room TV OFF
+      - service: media_player.turn_off
+        target:
+          entity_id: media_player.living_room_tv_2
+
+      # Bedroom TV ON
+      - service: media_player.turn_on
+        target:
+          entity_id: media_player.bedroom_tv_2
+
+      # Allow Fire TV / HDMI-CEC to wake
+      - delay: "00:00:05"
+
+      # Launch Netflix on Bedroom TV
+      - service: media_player.select_source
+        target:
+          entity_id: media_player.bedroom_tv_2
+        data:
+          source: "Netflix"
+
+      # 6) After 2 minutes, Living Room lights OFF completely
+      - delay: "00:02:00"
+      - service: light.turn_off
+        target:
+          entity_id:
+            - light.living_room_main_lights_1
+            - light.living_room_main_lights_2

@@ -1,0 +1,13 @@
+script:
+  say_on_sonos:
+    alias: Say on Sonos
+    mode: queued
+    fields:
+      message:
+        description: What to say
+    sequence:
+      - service: tts.speak
+        target:
+          entity_id: media_player.living_room
+        data:
+          message: "{{ message }}"
