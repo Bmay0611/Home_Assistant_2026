@@ -68,9 +68,10 @@ script:
             {% endif %}
       - service: tts.speak
         data:
-          message: "{{ msg }}"
+          platform: piper
           media_player_entity_id: "{{ resolved_tgt }}"
-  voice_play_media:
+          message: "{{ msg }}"
+          cache: falsevoice_play_media:
     alias: Voice - Play media helper
     description: >-
       Small helper to set volume and play on a target media_player. Call with
@@ -204,3 +205,4 @@ automation:
           entity_id: media_player.home_assistant_voice_0994f1_media_player
         data:
           volume_level: 0.0
+
