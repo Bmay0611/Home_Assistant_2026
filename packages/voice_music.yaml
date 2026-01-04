@@ -1,3 +1,24 @@
+﻿script:
+  music_play_voice:
+    alias: Play Music
+    description: Voice entry point for music requests (stub until speakers are connected)
+    mode: restart
+    fields:
+      music:
+        description: Music to play (artist, genre, playlist)
+      area:
+        description: Area to play in
+    sequence:
+      - service: script.music_set_session
+        data:
+          query: "{{ music if music is defined and music else 'music' }}"
+          where: "{{ area if area is defined and area else 'Main' }}"
+      - service: tts.speak
+        data:
+          message: >-
+            I will play {{ music if music is defined and music else 'music' }}
+            {{ 'in the ' ~ area if area is defined and area else '' }}
+            once the speaker system is connected.
 input_text:
   music_last_query:
     name: Music last query
@@ -140,3 +161,29 @@ script:
       - service: tts.speak
         data:
           message: "{{ msg }}"
+intent_script:
+  PlayMusicOnSonos:
+    speech:
+      text: "Okay."
+    action:
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: media_player.living_room
+                state: "unavailable"
+            sequence:
+              - service: script.speak_on_sonos
+                data:
+                  message: "The living room Sonos is unavailable right now."
+        default:
+          - service: media_player.volume_mute
+            target:
+              entity_id: media_player.living_room
+            data:
+              is_volume_muted: false
+          - service: media_player.media_play
+            target:
+              entity_id: media_player.living_room
+          - service: script.speak_on_sonos
+            data:
+              message: "Playing music in the living room."
