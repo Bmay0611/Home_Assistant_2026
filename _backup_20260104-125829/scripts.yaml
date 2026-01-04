@@ -1,0 +1,35 @@
+voice_assistant_query:
+  alias: "Voice Assistant Query"
+  mode: single
+  fields:
+    query:
+      description: "Text to send to ChatGPT"
+      example: "What’s the weather in New York on Tuesday?"
+  sequence:
+    - service: input_text.set_value
+      target:
+        entity_id: input_text.chatgpt_input
+      data:
+        value: "{{ query }}"
+
+    - service: rest_command.call_openai
+      data:
+        prompt: "{{ query }}"
+
+    - wait_for_trigger:
+        - platform: webhook
+          webhook_id: chatgpt_response
+      timeout: "00:00:10"
+
+    - service: input_text.set_value
+      target:
+        entity_id: input_text.chatgpt_output
+      data:
+        value: "{{ trigger.event.data.choices[0].message.content }}"
+
+    - service: tts.speak
+      data:
+        platform: piper
+        media_player_entity_id: media_player.sonos_living_room
+        message: "{{ states('input_text.chatgpt_output') }}"
+        cache: false

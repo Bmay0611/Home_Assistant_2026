@@ -1,0 +1,58 @@
+warning: in the working copy of 'scripts.yaml', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/scripts.yaml b/scripts.yaml[m
+[1mindex bfc9222..b631d41 100644[m
+[1m--- a/scripts.yaml[m
+[1m+++ b/scripts.yaml[m
+[36m@@ -1,10 +1,10 @@[m
+[31m-voice_assistant_query:[m
+[32m+[m[32m﻿voice_assistant_query:[m
+   alias: "Voice Assistant Query"[m
+   mode: single[m
+   fields:[m
+     query:[m
+       description: "Text to send to ChatGPT"[m
+[31m-      example: "What’s the weather in New York on Tuesday?"[m
+[32m+[m[32m      example: "What’s the weather on Tuesday?"[m
+   sequence:[m
+     - service: input_text.set_value[m
+       target:[m
+[36m@@ -26,10 +26,3 @@[m [mvoice_assistant_query:[m
+         entity_id: input_text.chatgpt_output[m
+       data:[m
+         value: "{{ trigger.event.data.choices[0].message.content }}"[m
+[31m-[m
+[31m-    - service: tts.speak[m
+[31m-      data:[m
+[31m-        platform: piper[m
+[31m-        media_player_entity_id: media_player.sonos_living_room[m
+[31m-        message: "{{ states('input_text.chatgpt_output') }}"[m
+[31m-        cache: false[m
+warning: in the working copy of 'scripts.yaml', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/scripts.yaml b/scripts.yaml[m
+[1mindex bfc9222..b631d41 100644[m
+[1m--- a/scripts.yaml[m
+[1m+++ b/scripts.yaml[m
+[36m@@ -1,10 +1,10 @@[m
+[31m-voice_assistant_query:[m
+[32m+[m[32m﻿voice_assistant_query:[m
+   alias: "Voice Assistant Query"[m
+   mode: single[m
+   fields:[m
+     query:[m
+       description: "Text to send to ChatGPT"[m
+[31m-      example: "What’s the weather in New York on Tuesday?"[m
+[32m+[m[32m      example: "What’s the weather on Tuesday?"[m
+   sequence:[m
+     - service: input_text.set_value[m
+       target:[m
+[36m@@ -26,10 +26,3 @@[m [mvoice_assistant_query:[m
+         entity_id: input_text.chatgpt_output[m
+       data:[m
+         value: "{{ trigger.event.data.choices[0].message.content }}"[m
+[31m-[m
+[31m-    - service: tts.speak[m
+[31m-      data:[m
+[31m-        platform: piper[m
+[31m-        media_player_entity_id: media_player.sonos_living_room[m
+[31m-        message: "{{ states('input_text.chatgpt_output') }}"[m
+[31m-        cache: false[m
