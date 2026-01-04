@@ -1,0 +1,33 @@
+# Home Assistant runtime state (do NOT track)
+.storage/
+.ha_run.lock
+.HA_VERSION
+
+# Home Assistant cloud + auth state
+.cloud/
+
+# Secrets (keep local only)
+secrets.yaml
+*.pem
+*.key
+*.crt
+*.cookiejar
+*.session
+
+# Databases and logs
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ESPHome build/cache
+esphome/.esphome/
+esphome/.build/
+
+# Frontend / node junk
+node_modules/
+deps/
