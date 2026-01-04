@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "minor_version": 4,
+  "key": "thread.datasets",
+  "data": {
+    "datasets": [
+      {
+        "created": "2025-03-06T00:27:41.464452+00:00",
+        "id": "01JNMDKNGRQBNQHAR880ZMTR1C",
+        "preferred_border_agent_id": "7548f56aa7c215689dc381cda24a8225",
+        "preferred_extended_address": "d6536cf2e382df62",
+        "source": "otbr",
+        "tlv": "0e080000000000010000000300000f4a0300001935060004001fffe002082a367a35ba11d0510708fda59b867e34e4e60510474ba1a7d72204f921b611defd570e8d030e68612d7468726561642d36326263010262bc041034e48b6ae4eb07ec508eb98b1260d2740c0402a0f7f8"
+      },
+      {
+        "created": "2025-03-16T02:46:39.706061+00:00",
+        "id": "01JPEDHAATNVG9KJKGRK3VTBZM",
+        "preferred_border_agent_id": null,
+        "preferred_extended_address": "1eb74a32a288427e",
+        "source": "iOS-app",
+        "tlv": "0e08000067b9e68f0000000300001935060004001fffc00208368c4fc2f4a1427e0708fd7538fe6d43000005106ffa5a550cca52289909aa85fec3cde603104d79486f6d65313134393835373934370102ba730410f72e80e9830c7c0cda25d9a702eb73640c0402a0f7f8"
+      }
+    ],
+    "preferred_dataset": "01JPEDHAATNVG9KJKGRK3VTBZM"
+  }
+}

@@ -1,0 +1,70 @@
+intents:
+  AskChatGPT:
+    data:
+      - sentences:
+          # Explicit GPT / Jarvis triggers (highest reliability)
+          - "ask chatgpt {query}"
+          - "ask chat g p t {query}"
+          - "ask jarvis {query}"
+          - "jarvis ask {query}"
+          - "chatgpt {query}"
+
+          # Common question forms
+          - "tell me {query}"
+          - "tell me about {query}"
+          - "explain {query}"
+          - "explain to me {query}"
+          - "help me {query}"
+          - "help me understand {query}"
+
+          # What / when / where / why / how (expanded)
+          - "what is {query}"
+          - "what are {query}"
+          - "what does {query}"
+          - "what should I {query}"
+          - "what time is {query}"
+          - "what time's {query}"
+          - "when is {query}"
+          - "when does {query}"
+          - "where is {query}"
+          - "why {query}"
+          - "why is {query}"
+          - "why does {query}"
+          - "how does {query}"
+          - "how do {query}"
+          - "how can I {query}"
+          - "how should I {query}"
+
+          # Date/time specific helpers (covers your example directly)
+          - "what time is sunset {query}"
+          - "what time's sunset {query}"
+          - "what time is the sunset {query}"
+          - "what time's the sunset {query}"
+          - "sunset {query}"
+          - "sunrise {query}"
+
+          # Opinion / reasoning
+          - "what do you think about {query}"
+          - "what's your opinion on {query}"
+          - "is it a good idea to {query}"
+          - "should I {query}"
+
+          # Comparison
+          - "compare {query}"
+          - "difference between {query}"
+          - "pros and cons of {query}"
+
+          # Creative / generative
+          - "come up with {query}"
+          - "give me ideas for {query}"
+          - "write me {query}"
+          - "help me plan {query}"
+
+          # Tech / troubleshooting
+          - "help me fix {query}"
+          - "why isn't {query} working"
+          - "troubleshoot {query}"
+
+        slots:
+          query:
+            type: wildcard

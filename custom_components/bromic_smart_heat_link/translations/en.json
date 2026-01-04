@@ -1,0 +1,94 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bromic Smart Heat Link Setup",
+        "description": "Configure your Bromic Smart Heat Link device. Select the serial port where your USB-to-RS232 adapter is connected.",
+        "data": {
+          "serial_port": "Serial Port"
+        },
+        "data_description": {
+          "serial_port": "The serial port path (e.g., /dev/ttyUSB0, COM3)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the device. Please check the serial port and connection.",
+      "unknown": "Unexpected error occurred during setup."
+    },
+    "abort": {
+      "already_configured": "This serial port is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bromic Smart Heat Link",
+        "description": "Manage your Bromic controllers and settings.",
+        "menu_options": {
+          "change_serial_port": "Change Serial Port",
+          "add_controller": "Add New Controller",
+          "adopt_controller": "Adopt Existing Controller",
+          "manage_controllers": "Manage Controllers"
+        }
+      },
+      "adopt_controller": {
+        "title": "Adopt Existing Controller",
+        "description": "If your Smart Heat Link is already programmed, you can adopt it without learning. Select an unused ID location and controller type.",
+        "data": {
+          "id_location": "ID Location",
+          "controller_type": "Controller Type"
+        },
+        "data_description": {
+          "id_location": "Choose an unused ID location (1-50) for this controller",
+          "controller_type": "Select the type of controller you are adopting"
+        }
+      },
+      "add_controller": {
+        "title": "Add New Controller",
+        "description": "Add a new Bromic controller by selecting an available ID location and controller type.",
+        "data": {
+          "id_location": "ID Location",
+          "controller_type": "Controller Type"
+        },
+        "data_description": {
+          "id_location": "Choose an unused ID location (1-50) for this controller",
+          "controller_type": "Select the type of controller you want to add"
+        }
+      },
+      "learn_buttons": {
+        "title": "Learn Controller Buttons",
+        "description": "Learn the button commands for your {controller_type} controller at ID location {id_location}.\n\n**Learn {button_name}**\n\nProgress: {learned_count}/{total_buttons} buttons learned\n\n**Instructions:**\n1. Press and hold the **P3 button** on your existing remote control (you will hear a continuous tone).\n2. Click **Send Learn Command** as the tone begins.\n3. When you hear the confirmation tones (you may hear multiple beeps), click **I heard the confirmation tones** to advance.\n4. If you didn't hear them, click **I didn't hear it - retry** to resend without advancing.\n\nIf you don't need this button, choose **Skip**.",
+        "data": {
+          "action": "Action"
+        }
+      },
+      "manage_controllers": {
+        "title": "Manage Controllers",
+        "description": "View and manage your configured controllers.",
+        "data": {
+          "controller_id": "Controller",
+          "action": "Action"
+        }
+      }
+    },
+    "error": {
+      "id_already_used": "This ID location is already in use. Please select a different one.",
+      "no_available_ids": "All ID locations (1-50) are in use. Please remove a controller first.",
+      "learning_failed": "Failed to learn button {button_number} ({button_name}) for ID {id_location}: {error}",
+      "no_controllers": "No controllers configured. Add a controller first."
+    }
+  },
+  "entity": {
+    "switch": {
+      "bromic_switch": {
+        "name": "Bromic Switch"
+      }
+    },
+    "light": {
+      "bromic_light": {
+        "name": "Bromic Light"
+      }
+    }
+  }
+}

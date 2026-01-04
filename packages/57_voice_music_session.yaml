@@ -1,0 +1,142 @@
+input_text:
+  music_last_query:
+    name: Music last query
+    max: 255
+  music_last_where:
+    name: Music last where
+    max: 255
+
+input_number:
+  music_target_volume:
+    name: Music target volume
+    min: 0
+    max: 1
+    step: 0.01
+    mode: slider
+
+input_boolean:
+  music_active:
+    name: Music active
+
+script:
+  music_set_session:
+    alias: Music - Set session (internal)
+    mode: queued
+    fields:
+      query:
+        description: What to play
+      where:
+        description: Where to play
+    sequence:
+      - choose:
+          - conditions: "{{ query is defined and (query | string | length) > 0 }}"
+            sequence:
+              - service: input_text.set_value
+                target:
+                  entity_id: input_text.music_last_query
+                data:
+                  value: "{{ query }}"
+      - choose:
+          - conditions: "{{ where is defined and (where | string | length) > 0 }}"
+            sequence:
+              - service: input_text.set_value
+                target:
+                  entity_id: input_text.music_last_where
+                data:
+                  value: "{{ where }}"
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.music_active
+
+  music_stop_session:
+    alias: Music - Stop session (internal)
+    mode: queued
+    sequence:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.music_active
+
+  music_report_status:
+    alias: Music - Report status (voice)
+    mode: single
+    sequence:
+      - variables:
+          active: "{{ is_state('input_boolean.music_active','on') }}"
+          q: "{{ states('input_text.music_last_query') }}"
+          w: "{{ states('input_text.music_last_where') }}"
+          v: "{{ (states('input_number.music_target_volume') | float(0.3) * 100) | round(0) }}"
+          msg: >-
+            {% if active %}
+              Music is set to {{ q if q|length>0 else 'something' }}
+              {{ 'in ' ~ w if w|length>0 else '' }} at about {{ v }} percent volume.
+            {% else %}
+              No music is currently active.
+            {% endif %}
+      - service: tts.speak
+        data:
+          message: "{{ msg }}"
+
+  music_turn_down:
+    alias: Music - Turn down (voice)
+    mode: single
+    sequence:
+      - variables:
+          current: "{{ states('input_number.music_target_volume') | float(0.30) }}"
+          newv: "{{ [current - 0.10, 0.0] | max }}"
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.music_target_volume
+        data:
+          value: "{{ newv }}"
+      - service: tts.speak
+        data:
+          message: "Turning it down."
+
+  music_turn_up:
+    alias: Music - Turn up (voice)
+    mode: single
+    sequence:
+      - variables:
+          current: "{{ states('input_number.music_target_volume') | float(0.30) }}"
+          newv: "{{ [current + 0.10, 1.0] | min }}"
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.music_target_volume
+        data:
+          value: "{{ newv }}"
+      - service: tts.speak
+        data:
+          message: "Turning it up."
+
+  music_add_room:
+    alias: Music - Add room (voice)
+    mode: single
+    fields:
+      room:
+        description: Room to add
+    sequence:
+      - variables:
+          w: "{{ states('input_text.music_last_where') }}"
+          r: "{{ room | default('') }}"
+          msg: >-
+            {% if r|length == 0 %}
+              Which room should I add?
+            {% else %}
+              Adding {{ r }}. Once speakers are connected, I will play in {{ w }} and {{ r }}.
+            {% endif %}
+      - choose:
+          - conditions: "{{ r|length > 0 }}"
+            sequence:
+              - service: input_text.set_value
+                target:
+                  entity_id: input_text.music_last_where
+                data:
+                  value: >-
+                    {% if w|length > 0 %}
+                      {{ w ~ ' and ' ~ r }}
+                    {% else %}
+                      {{ r }}
+                    {% endif %}
+      - service: tts.speak
+        data:
+          message: "{{ msg }}"

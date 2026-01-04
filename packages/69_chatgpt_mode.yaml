@@ -1,0 +1,76 @@
+input_boolean:
+  chatgpt_mode:
+    name: ChatGPT mode
+
+timer:
+  chatgpt_mode_timeout:
+    name: ChatGPT mode timeout
+    duration: "00:05:00"
+
+intent_script:
+  EnableChatGPTMode:
+    speech:
+      text: "Okay."
+    action:
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.chatgpt_mode
+
+      - service: select.select_option
+        target:
+          entity_id: select.voice_pe_assistant
+        data:
+          option: "Home Assistant Cloud"
+
+      - service: timer.start
+        target:
+          entity_id: timer.chatgpt_mode_timeout
+
+      - service: script.speak_on_sonos
+        data:
+          message: "Chat mode enabled."
+
+  DisableChatGPTMode:
+    speech:
+      text: "Okay."
+    action:
+      - service: timer.cancel
+        target:
+          entity_id: timer.chatgpt_mode_timeout
+
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.chatgpt_mode
+
+      - service: select.select_option
+        target:
+          entity_id: select.voice_pe_assistant
+        data:
+          option: "Home Assistant"
+
+      - service: script.speak_on_sonos
+        data:
+          message: "Chat mode disabled."
+
+automation:
+  - id: chatgpt_mode_auto_off
+    alias: ChatGPT mode auto-off
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.chatgpt_mode_timeout
+    action:
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.chatgpt_mode
+
+      - service: select.select_option
+        target:
+          entity_id: select.voice_pe_assistant
+        data:
+          option: "Home Assistant"
+
+      - service: script.speak_on_sonos
+        data:
+          message: "Chat mode timed out. Back to normal."

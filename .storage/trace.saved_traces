@@ -1,0 +1,971 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "trace.saved_traces",
+  "data": {
+    "automation.voicepe_force_mute": [
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "ae8db9eff654840b655aada1a8951e45",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T00:20:14.292187+00:00",
+            "finish": "2026-01-03T00:20:14.297413+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player",
+          "trace": {
+            "trigger/1": [
+              {
+                "path": "trigger/1",
+                "timestamp": "2026-01-03T00:20:14.292405+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.voice_pe_force_mute_speaker",
+                    "state": "on",
+                    "attributes": {
+                      "id": "voicepe_force_mute",
+                      "last_triggered": "2026-01-03T00:20:10.090788+00:00",
+                      "mode": "restart",
+                      "current": 0,
+                      "friendly_name": "Voice PE - Force mute speaker"
+                    },
+                    "last_changed": "2026-01-02T04:10:49.127075+00:00",
+                    "last_reported": "2026-01-03T00:20:10.093614+00:00",
+                    "last_updated": "2026-01-03T00:20:10.093614+00:00",
+                    "context": {
+                      "id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+                      "parent_id": "01KE0KKNQ7CXPTZHJSVPTH6XZW",
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "1",
+                    "idx": "1",
+                    "alias": null,
+                    "platform": "state",
+                    "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                    "from_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "playing",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T00:20:10.087855+00:00",
+                      "last_reported": "2026-01-03T00:20:10.087855+00:00",
+                      "last_updated": "2026-01-03T00:20:10.087855+00:00",
+                      "context": {
+                        "id": "01KE0KKNQ7CXPTZHJSVPTH6XZW",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "to_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "idle",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T00:20:14.290758+00:00",
+                      "last_reported": "2026-01-03T00:20:14.290758+00:00",
+                      "last_updated": "2026-01-03T00:20:14.290758+00:00",
+                      "context": {
+                        "id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+                        "parent_id": "01KE0KKNQ7CXPTZHJSVPTH6XZW",
+                        "user_id": null
+                      }
+                    },
+                    "for": null,
+                    "attribute": null,
+                    "description": "state of media_player.home_assistant_voice_0994f1_media_player"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2026-01-03T00:20:14.293172+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01KE0KKSTM6FS7TQBVD084BC9T",
+                    "parent_id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "media_player",
+                    "service": "volume_set",
+                    "service_data": {
+                      "volume_level": 0.0,
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "id": "voicepe_force_mute",
+            "alias": "Voice PE - Force mute speaker",
+            "mode": "restart",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              },
+              {
+                "platform": "state",
+                "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+              }
+            ],
+            "action": [
+              {
+                "target": {
+                  "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+                },
+                "data": {
+                  "volume_level": 0.0
+                },
+                "action": "media_player.volume_set"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE0KKSTM6FS7TQBVD084BC9T",
+            "parent_id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "ae8db9eff654840b655aada1a8951e45",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T00:20:14.292187+00:00",
+            "finish": "2026-01-03T00:20:14.297413+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "49cf1a0ff6f1ac8d368e0ad3c3afb5a2",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:15.014606+00:00",
+            "finish": "2026-01-03T06:09:15.018997+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player",
+          "trace": {
+            "trigger/1": [
+              {
+                "path": "trigger/1",
+                "timestamp": "2026-01-03T06:09:15.014747+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.voice_pe_force_mute_speaker",
+                    "state": "on",
+                    "attributes": {
+                      "id": "voicepe_force_mute",
+                      "last_triggered": "2026-01-03T00:20:14.292652+00:00",
+                      "mode": "restart",
+                      "current": 0,
+                      "friendly_name": "Voice PE - Force mute speaker"
+                    },
+                    "last_changed": "2026-01-02T04:10:49.127075+00:00",
+                    "last_reported": "2026-01-03T00:20:14.297023+00:00",
+                    "last_updated": "2026-01-03T00:20:14.297023+00:00",
+                    "context": {
+                      "id": "01KE0KKSTM6FS7TQBVD084BC9T",
+                      "parent_id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "1",
+                    "idx": "1",
+                    "alias": null,
+                    "platform": "state",
+                    "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                    "from_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "idle",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T00:20:14.290758+00:00",
+                      "last_reported": "2026-01-03T00:20:14.290758+00:00",
+                      "last_updated": "2026-01-03T00:20:14.290758+00:00",
+                      "context": {
+                        "id": "01KE0KKNQAW5JXVVVHNPDQCQRA",
+                        "parent_id": "01KE0KKNQ7CXPTZHJSVPTH6XZW",
+                        "user_id": null
+                      }
+                    },
+                    "to_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "playing",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:15.011873+00:00",
+                      "last_reported": "2026-01-03T06:09:15.011873+00:00",
+                      "last_updated": "2026-01-03T06:09:15.011873+00:00",
+                      "context": {
+                        "id": "01KE17JVR3BSH3DYTZ8RV4H16H",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "for": null,
+                    "attribute": null,
+                    "description": "state of media_player.home_assistant_voice_0994f1_media_player"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2026-01-03T06:09:15.015535+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01KE17JVR6C71MB7WPMPFTPVCB",
+                    "parent_id": "01KE17JVR3BSH3DYTZ8RV4H16H",
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "media_player",
+                    "service": "volume_set",
+                    "service_data": {
+                      "volume_level": 0.0,
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "id": "voicepe_force_mute",
+            "alias": "Voice PE - Force mute speaker",
+            "mode": "restart",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              },
+              {
+                "platform": "state",
+                "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+              }
+            ],
+            "action": [
+              {
+                "target": {
+                  "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+                },
+                "data": {
+                  "volume_level": 0.0
+                },
+                "action": "media_player.volume_set"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE17JVR6C71MB7WPMPFTPVCB",
+            "parent_id": "01KE17JVR3BSH3DYTZ8RV4H16H",
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "49cf1a0ff6f1ac8d368e0ad3c3afb5a2",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:15.014606+00:00",
+            "finish": "2026-01-03T06:09:15.018997+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "2541c53673e9096f14894eef178e2eba",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:28.273630+00:00",
+            "finish": "2026-01-03T06:09:28.279383+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player",
+          "trace": {
+            "trigger/1": [
+              {
+                "path": "trigger/1",
+                "timestamp": "2026-01-03T06:09:28.273855+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.voice_pe_force_mute_speaker",
+                    "state": "on",
+                    "attributes": {
+                      "id": "voicepe_force_mute",
+                      "last_triggered": "2026-01-03T06:09:15.014998+00:00",
+                      "mode": "restart",
+                      "current": 0,
+                      "friendly_name": "Voice PE - Force mute speaker"
+                    },
+                    "last_changed": "2026-01-02T04:10:49.127075+00:00",
+                    "last_reported": "2026-01-03T06:09:15.018617+00:00",
+                    "last_updated": "2026-01-03T06:09:15.018617+00:00",
+                    "context": {
+                      "id": "01KE17JVR6C71MB7WPMPFTPVCB",
+                      "parent_id": "01KE17JVR3BSH3DYTZ8RV4H16H",
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "1",
+                    "idx": "1",
+                    "alias": null,
+                    "platform": "state",
+                    "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                    "from_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "playing",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:15.011873+00:00",
+                      "last_reported": "2026-01-03T06:09:15.011873+00:00",
+                      "last_updated": "2026-01-03T06:09:15.011873+00:00",
+                      "context": {
+                        "id": "01KE17JVR3BSH3DYTZ8RV4H16H",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "to_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "idle",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:28.272855+00:00",
+                      "last_reported": "2026-01-03T06:09:28.272855+00:00",
+                      "last_updated": "2026-01-03T06:09:28.272855+00:00",
+                      "context": {
+                        "id": "01KE17K8PGA9M8YKGRACW1SRF6",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "for": null,
+                    "attribute": null,
+                    "description": "state of media_player.home_assistant_voice_0994f1_media_player"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2026-01-03T06:09:28.274678+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01KE17K8PHE3BPJ644CTP500CP",
+                    "parent_id": "01KE17K8PGA9M8YKGRACW1SRF6",
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "media_player",
+                    "service": "volume_set",
+                    "service_data": {
+                      "volume_level": 0.0,
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "id": "voicepe_force_mute",
+            "alias": "Voice PE - Force mute speaker",
+            "mode": "restart",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              },
+              {
+                "platform": "state",
+                "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+              }
+            ],
+            "action": [
+              {
+                "target": {
+                  "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+                },
+                "data": {
+                  "volume_level": 0.0
+                },
+                "action": "media_player.volume_set"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE17K8PHE3BPJ644CTP500CP",
+            "parent_id": "01KE17K8PGA9M8YKGRACW1SRF6",
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "2541c53673e9096f14894eef178e2eba",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:28.273630+00:00",
+            "finish": "2026-01-03T06:09:28.279383+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "9eb566eff544ca1007fa0ad2ade8efb0",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:37.121457+00:00",
+            "finish": "2026-01-03T06:09:37.129309+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player",
+          "trace": {
+            "trigger/1": [
+              {
+                "path": "trigger/1",
+                "timestamp": "2026-01-03T06:09:37.121791+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.voice_pe_force_mute_speaker",
+                    "state": "on",
+                    "attributes": {
+                      "id": "voicepe_force_mute",
+                      "last_triggered": "2026-01-03T06:09:28.274122+00:00",
+                      "mode": "restart",
+                      "current": 0,
+                      "friendly_name": "Voice PE - Force mute speaker"
+                    },
+                    "last_changed": "2026-01-02T04:10:49.127075+00:00",
+                    "last_reported": "2026-01-03T06:09:28.278975+00:00",
+                    "last_updated": "2026-01-03T06:09:28.278975+00:00",
+                    "context": {
+                      "id": "01KE17K8PHE3BPJ644CTP500CP",
+                      "parent_id": "01KE17K8PGA9M8YKGRACW1SRF6",
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "1",
+                    "idx": "1",
+                    "alias": null,
+                    "platform": "state",
+                    "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                    "from_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "idle",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:28.272855+00:00",
+                      "last_reported": "2026-01-03T06:09:28.272855+00:00",
+                      "last_updated": "2026-01-03T06:09:28.272855+00:00",
+                      "context": {
+                        "id": "01KE17K8PGA9M8YKGRACW1SRF6",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "to_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "playing",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:37.119093+00:00",
+                      "last_reported": "2026-01-03T06:09:37.119093+00:00",
+                      "last_updated": "2026-01-03T06:09:37.119093+00:00",
+                      "context": {
+                        "id": "01KE17KHAZKV3R2P8E3NSF0967",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "for": null,
+                    "attribute": null,
+                    "description": "state of media_player.home_assistant_voice_0994f1_media_player"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2026-01-03T06:09:37.123096+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01KE17KHB1YNAPNHET2ZTC0J4A",
+                    "parent_id": "01KE17KHAZKV3R2P8E3NSF0967",
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "media_player",
+                    "service": "volume_set",
+                    "service_data": {
+                      "volume_level": 0.0,
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "id": "voicepe_force_mute",
+            "alias": "Voice PE - Force mute speaker",
+            "mode": "restart",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              },
+              {
+                "platform": "state",
+                "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+              }
+            ],
+            "action": [
+              {
+                "target": {
+                  "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+                },
+                "data": {
+                  "volume_level": 0.0
+                },
+                "action": "media_player.volume_set"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE17KHB1YNAPNHET2ZTC0J4A",
+            "parent_id": "01KE17KHAZKV3R2P8E3NSF0967",
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "9eb566eff544ca1007fa0ad2ade8efb0",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:37.121457+00:00",
+            "finish": "2026-01-03T06:09:37.129309+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "171bf9e05a6dc7b808d50c217298fc69",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:47.095061+00:00",
+            "finish": "2026-01-03T06:09:47.100780+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player",
+          "trace": {
+            "trigger/1": [
+              {
+                "path": "trigger/1",
+                "timestamp": "2026-01-03T06:09:47.095348+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.voice_pe_force_mute_speaker",
+                    "state": "on",
+                    "attributes": {
+                      "id": "voicepe_force_mute",
+                      "last_triggered": "2026-01-03T06:09:37.122348+00:00",
+                      "mode": "restart",
+                      "current": 0,
+                      "friendly_name": "Voice PE - Force mute speaker"
+                    },
+                    "last_changed": "2026-01-02T04:10:49.127075+00:00",
+                    "last_reported": "2026-01-03T06:09:37.128717+00:00",
+                    "last_updated": "2026-01-03T06:09:37.128717+00:00",
+                    "context": {
+                      "id": "01KE17KHB1YNAPNHET2ZTC0J4A",
+                      "parent_id": "01KE17KHAZKV3R2P8E3NSF0967",
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "1",
+                    "idx": "1",
+                    "alias": null,
+                    "platform": "state",
+                    "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                    "from_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "playing",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:37.119093+00:00",
+                      "last_reported": "2026-01-03T06:09:37.119093+00:00",
+                      "last_updated": "2026-01-03T06:09:37.119093+00:00",
+                      "context": {
+                        "id": "01KE17KHAZKV3R2P8E3NSF0967",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "to_state": {
+                      "entity_id": "media_player.home_assistant_voice_0994f1_media_player",
+                      "state": "idle",
+                      "attributes": {
+                        "volume_level": 0.0,
+                        "is_volume_muted": true,
+                        "device_class": "speaker",
+                        "friendly_name": "Home Assistant Voice Media Player",
+                        "supported_features": 1200653
+                      },
+                      "last_changed": "2026-01-03T06:09:47.094357+00:00",
+                      "last_reported": "2026-01-03T06:09:47.094357+00:00",
+                      "last_updated": "2026-01-03T06:09:47.094357+00:00",
+                      "context": {
+                        "id": "01KE17KV2P8YQDA3C65YFT3YGZ",
+                        "parent_id": null,
+                        "user_id": null
+                      }
+                    },
+                    "for": null,
+                    "attribute": null,
+                    "description": "state of media_player.home_assistant_voice_0994f1_media_player"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2026-01-03T06:09:47.096085+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01KE17KV2PC40VQ4YRN0CKSEV4",
+                    "parent_id": "01KE17KV2P8YQDA3C65YFT3YGZ",
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "media_player",
+                    "service": "volume_set",
+                    "service_data": {
+                      "volume_level": 0.0,
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "media_player.home_assistant_voice_0994f1_media_player"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "id": "voicepe_force_mute",
+            "alias": "Voice PE - Force mute speaker",
+            "mode": "restart",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              },
+              {
+                "platform": "state",
+                "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+              }
+            ],
+            "action": [
+              {
+                "target": {
+                  "entity_id": "media_player.home_assistant_voice_0994f1_media_player"
+                },
+                "data": {
+                  "volume_level": 0.0
+                },
+                "action": "media_player.volume_set"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE17KV2PC40VQ4YRN0CKSEV4",
+            "parent_id": "01KE17KV2P8YQDA3C65YFT3YGZ",
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "171bf9e05a6dc7b808d50c217298fc69",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T06:09:47.095061+00:00",
+            "finish": "2026-01-03T06:09:47.100780+00:00"
+          },
+          "domain": "automation",
+          "item_id": "voicepe_force_mute",
+          "trigger": "state of media_player.home_assistant_voice_0994f1_media_player"
+        }
+      }
+    ],
+    "script.speak_on_sonos": [
+      {
+        "extended_dict": {
+          "last_step": "sequence/1",
+          "run_id": "b2448a0edd896bf0810bfcfad788fba0",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T00:20:08.146758+00:00",
+            "finish": "2026-01-03T00:20:08.252214+00:00"
+          },
+          "domain": "script",
+          "item_id": "speak_on_sonos",
+          "trace": {
+            "sequence/0": [
+              {
+                "path": "sequence/0",
+                "timestamp": "2026-01-03T00:20:08.147776+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "script.speak_on_sonos",
+                    "state": "off",
+                    "attributes": {
+                      "last_triggered": "2026-01-02T03:48:59.987367+00:00",
+                      "mode": "queued",
+                      "current": 0,
+                      "max": 10,
+                      "friendly_name": "Speak on Sonos"
+                    },
+                    "last_changed": "2026-01-02T04:10:17.967259+00:00",
+                    "last_reported": "2026-01-02T04:10:17.967259+00:00",
+                    "last_updated": "2026-01-02T04:10:17.967259+00:00",
+                    "context": {
+                      "id": "01KDYECAZFST62MN81KDKFWTYK",
+                      "parent_id": null,
+                      "user_id": null
+                    }
+                  },
+                  "message": "Playing music in the living room.",
+                  "context": {
+                    "id": "01KE0KKCJ5744KW2J4NACSZRG0",
+                    "parent_id": null,
+                    "user_id": null
+                  },
+                  "msg": "Playing music in the living room."
+                }
+              }
+            ],
+            "sequence/1": [
+              {
+                "path": "sequence/1",
+                "timestamp": "2026-01-03T00:20:08.151370+00:00",
+                "result": {
+                  "params": {
+                    "domain": "tts",
+                    "service": "speak",
+                    "service_data": {
+                      "media_player_entity_id": "media_player.living_room",
+                      "message": "Playing music in the living room.",
+                      "entity_id": [
+                        "tts.home_assistant_cloud"
+                      ]
+                    },
+                    "target": {
+                      "entity_id": [
+                        "tts.home_assistant_cloud"
+                      ]
+                    }
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "alias": "Speak on Sonos",
+            "mode": "queued",
+            "fields": {
+              "message": {
+                "description": "Text to speak",
+                "example": "Hello from Sonos"
+              }
+            },
+            "sequence": [
+              {
+                "variables": {
+                  "msg": "{% set m = message | default('') %} {% if m | trim | length > 0 %}\n  {{ m }}\n{% else %}\n  Sonos speech test.\n{% endif %}"
+                }
+              },
+              {
+                "target": {
+                  "entity_id": "tts.home_assistant_cloud"
+                },
+                "data": {
+                  "media_player_entity_id": "media_player.living_room",
+                  "message": "{{ msg }}"
+                },
+                "action": "tts.speak"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01KE0KKCJ5744KW2J4NACSZRG0",
+            "parent_id": null,
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "sequence/1",
+          "run_id": "b2448a0edd896bf0810bfcfad788fba0",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2026-01-03T00:20:08.146758+00:00",
+            "finish": "2026-01-03T00:20:08.252214+00:00"
+          },
+          "domain": "script",
+          "item_id": "speak_on_sonos"
+        }
+      }
+    ]
+  }
+}

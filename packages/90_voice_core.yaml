@@ -1,0 +1,192 @@
+# Voice core helpers: centralized reply/playback and safe TTS fallback
+#
+# Purpose:
+# - Provide a single script to speak short replies (voice_reply) that will route to
+#   your Sonos living room when appropriate (using existing script.speak_on_sonos),
+#   and to a generic TTS fallback (google_translate) for other targets.
+# - Add an automation that listens for chatgpt output (input_text.chatgpt_output)
+#   and speaks it automatically using the voice_reply script.
+#
+# Impact: non-destructive. Adds scripts and an automation only. Does NOT change
+# existing entities, scripts, or automations. If you prefer a different TTS,
+# edit the voice_reply script lines that call tts.google_translate_say.
+#
+# Notes on usage:
+# - Existing flows that produced chat output into input_text.chatgpt_output
+#   (your scripts.voice_assistant_query) will now be automatically spoken.
+# - To speak arbitrary text manually, call script.voice_reply with 'message' and
+#   optional 'target' (entity_id of the media_player). If 'target' is omitted
+#   the script will use sensor.music_target_media_player (from your
+#   packages/20_media_control.yaml) as the default target.
+#
+# What you must do manually after install:
+# - Ensure media_player.living_room is online and unmuted.
+# - If you prefer another TTS (piper, cloud, ElevenLabs), update the script
+#   voice_reply to call the appropriate tts service.
+# - Complete any integration setups that require interactive OAuth/credentials
+#   or device pairing (Spotify, Lutron, Z-Wave, Zigbee coordinators, etc.).
+
+input_select:
+  voice_reply_default_target:
+    name: Voice reply default target
+    options:
+      - Media: Sonos Living Room
+      - Media: Music Zone (auto)
+      - Device: Nearest Tablet
+    initial: "Media: Music Zone (auto)"
+    icon: mdi:account_voice
+
+script:
+  voice_reply:
+    alias: Voice - Reply (central)
+    description: >-
+      Speak a short reply. If target is media_player.living_room, we call
+      script.speak_on_sonos (which uses Sonos-specific TTS flow). Otherwise we
+      use google_translate TTS as a broad fallback. Uses sensor.music_target_media_player
+      if no explicit target is provided.
+    mode: queued
+    fields:
+      message:
+        description: Text to speak
+      target:
+        description: Optional entity_id for target media_player (e.g. media_player.living_room)
+    sequence:
+      - variables:
+          msg: "{{ message | default('') }}"
+          tgt: >-
+            {% if target is defined and target | string | length > 0 %}
+              {{ target }}
+            {% else %}
+              {{ states('sensor.music_target_media_player') }}
+            {% endif %}
+      - choose:
+          - conditions: "{{ (tgt | string) == 'media_player.living_room' }}"
+            sequence:
+              - service: script.speak_on_sonos
+                data:
+                  message: "{{ msg }}"
+        default:
+          - condition: template
+            value_template: "{{ (tgt | string) not in ['', 'unknown', 'unavailable', 'None'] }}"
+          - service: tts.google_translate_say
+            data:
+              entity_id: "{{ tgt }}"
+              message: "{{ msg }}"
+
+  voice_play_media:
+    alias: Voice - Play media helper
+    description: >-
+      Small helper to set volume and play on a target media_player. Call with
+      target and optional volume (0.0 - 1.0) and media (media_content_id + type)
+      to standardize play actions called from voice scripts.
+    mode: queued
+    fields:
+      target:
+        description: Target media_player entity_id
+      volume:
+        description: Optional volume level 0.0-1.0
+      media_content_id:
+        description: media_content_id to play (optional)
+      media_content_type:
+        description: media_content_type to play (optional)
+    sequence:
+      - variables:
+          tgt: "{{ target }}"
+          vol: "{{ volume if volume is defined else none }}"
+      - choose:
+          - conditions: "{{ vol is not none }}"
+            sequence:
+              - service: media_player.volume_set
+                data:
+                  entity_id: "{{ tgt }}"
+                  volume_level: "{{ vol | float }}"
+      - choose:
+          - conditions: "{{ media_content_id is defined and media_content_id | string | length > 0 }}"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: "{{ tgt }}"
+                  media_content_id: "{{ media_content_id }}"
+                  media_content_type: "{{ media_content_type | default('music') }}"
+          - default:
+              - service: media_player.media_play
+                data:
+                  entity_id: "{{ tgt }}"
+
+automation:
+  - id: voice_reply_on_chatgpt_output
+    alias: Voice - speak chatgpt output automatically
+    description: >-
+      When input_text.chatgpt_output is updated with a non-empty string,
+      automatically speak it using the central voice_reply script. This
+      connects your existing scripts that populate chatgpt output with audible
+      replies without editing those scripts.
+    trigger:
+      - platform: state
+        entity_id: input_text.chatgpt_output
+    condition:
+      - condition: template
+        value_template: "{{ trigger.to_state.state | string | length > 0 }}"
+    action:
+      - service: script.voice_reply
+        data:
+          message: "{{ trigger.to_state.state }}"
+
+# -----------------------------
+# Integration / setup guidance
+# -----------------------------
+# Below are notes and templates you will still need to complete in the UI or
+# by pairing devices. I include them as comments so you have a central place
+# to copy/paste into config if desired.
+#
+# Lutron Caseta (recommended): Use the Lutron Caseta integration from the
+# Home Assistant UI. If you have a Smart Bridge Pro, add it via Integrations →
+# Add Integration → Lutron Caseta. No long-term secrets go into YAML for this.
+#
+# Z-Wave JS (Schlage locks): Use the Z-Wave JS add-on + integration and pair
+# your Schlage. Example start (do NOT paste API keys here):
+# zwave_js:
+#   usb_path: /dev/ttyUSB0
+#   network_key: "SOME_HEX_KEY"
+#
+# Zigbee (ZHA) example (if using a coordinator like ConBee II or EmberZNet):
+# zha:
+#   zigpy_config:
+#     database_path: /config/zigbee.db
+#
+# Fire TV / Android TV: Install ADB Server add-on or use the Android TV
+# integration. For Fire TV, enable ADB debugging on the Fire device and add
+# integration via Integrations UI.
+#
+# Spotify: Install the Spotify integration from Integrations UI (requires
+# OAuth). After adding, you'll have media_player.spotify_xxx entities and can
+# target them from scripts. For multi-room Spotify, Sonos typically handles
+# playing from Spotify on Sonos devices.
+#
+# Apple Music: Home Assistant cannot stream Apple Music directly to arbitrary
+# devices. Recommended approaches:
+# - Use Sonos: Sonos supports Apple Music as a service inside Sonos — add Apple
+#   Music through the Sonos app and Sonos will then be able to play Apple Music
+#   playlists. You can control Sonos from HA, but the OAuth pairing for
+#   Apple Music is done inside Sonos app.
+# - AirPlay 2-capable speakers/tablets: Use AirPlay from an Apple device.
+#
+# Tablets for wall mounting: Recommended setup
+# - Android tablets: use the Home Assistant Companion App (gives full access)
+#   or Fully Kiosk Browser for kiosk mode with microphone support (Fully must be
+#   granted the RECORD_AUDIO permission and configured to forward audio to HA).
+# - iPad/iPhone: Home Assistant Companion App is supported; microphone usage is
+#   limited compared to Android for some custom voice pipelines.
+#
+# Final notes:
+# - This package intentionally uses script.speak_on_sonos for Sonos replies and
+#   google_translate as a safe fallback for other devices. If you want higher-
+#   fidelity TTS (Piper, ElevenLabs, or cloud TTS), we can update the voice_reply
+#   script to call the chosen service in one place.
+# - After adding this package, test:
+#   1) Developer Tools → States: set input_text.chatgpt_output to a test phrase.
+#   2) Confirm Sonos plays the phrase (if your music zone resolves to Sonos)
+#
+# If you'd like, I can also propose a follow-up file that replaces google_translate
+# fallback with piper or ElevenLabs and updates your other scripts to call
+# script.voice_reply instead of calling tts directly.

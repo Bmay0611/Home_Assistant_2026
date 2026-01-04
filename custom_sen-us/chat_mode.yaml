@@ -1,0 +1,22 @@
+intents:
+  EnableChatGPTMode:
+    data:
+      - sentences:
+          - "chat mode"
+          - "chat mode on"
+          - "enable chat mode"
+          - "enable chat g p t mode"
+          - "turn on chat mode"
+          - "turn on chat g p t"
+          - "talk mode"
+          - "conversation mode"
+  DisableChatGPTMode:
+    data:
+      - sentences:
+          - "chat mode off"
+          - "disable chat mode"
+          - "turn off chat mode"
+          - "exit chat mode"
+          - "stop chat mode"
+          - "go back"
+          - "normal mode"

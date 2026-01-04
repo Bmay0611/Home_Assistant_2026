@@ -1,0 +1,222 @@
+# Media control built around stable Alexa speaker groups
+# Core is the only multi-room group. Others are single speakers.
+
+input_select:
+  music_zone:
+    name: Music zone
+    options:
+      - Core
+      - Patio
+      - Studio
+      - Sunroom
+      - Living Room
+      - Bedroom
+      - Kitchen
+      - Bar
+
+  music_provider:
+    name: Music provider
+    options:
+      - Default
+      - Spotify
+      - Apple Music
+      - Amazon Music
+
+input_text:
+  music_search:
+    name: Music search
+    max: 255
+
+input_number:
+  music_volume:
+    name: Music volume
+    min: 0
+    max: 1
+    step: 0.01
+    mode: slider
+
+input_button:
+  music_play:
+    name: Play music
+  music_pause:
+    name: Pause
+  music_stop:
+    name: Stop
+  music_next:
+    name: Next
+  music_previous:
+    name: Previous
+
+template:
+  - sensor:
+      - name: Music target media_player
+        unique_id: music_target_media_player
+        state: >-
+          {% set m = {
+            'Core': 'media_player.core',
+            'Patio': 'media_player.patio',
+            'Studio': 'media_player.studio_echo_pop',
+            'Sunroom': 'media_player.sunroom_dot',
+            'Living Room': 'media_player.living_room',
+            'Bedroom': 'media_player.bedroom_tv',
+            'Kitchen': 'media_player.kitchen_echo_show',
+            'Bar': 'media_player.bar_echo'
+          } %}
+          {{ m.get(states('input_select.music_zone'), 'media_player.core') }}
+
+group:
+  core_speakers:
+    name: Core speakers
+    entities:
+      - media_player.kitchen_echo_show
+      - media_player.sunroom_dot
+      - media_player.bathroom_show
+      - media_player.brandon_s_2nd_echo_spot
+
+script:
+  music_play:
+    alias: Music - Play
+    mode: restart
+    fields:
+      search:
+        description: What to play
+      zone:
+        description: Music zone override
+      provider:
+        description: Music provider override
+      volume:
+        description: Volume override (0.0 - 1.0)
+    sequence:
+      - variables:
+          zone_eff: "{{ zone if zone is defined and zone else states('input_select.music_zone') }}"
+          provider_eff: "{{ provider if provider is defined and provider else states('input_select.music_provider') }}"
+          search_eff: "{{ search if search is defined and search else states('input_text.music_search') }}"
+          target_player: >-
+            {% set m = {
+              'Core': 'media_player.core',
+              'Patio': 'media_player.patio',
+              'Studio': 'media_player.studio_echo_pop',
+              'Sunroom': 'media_player.sunroom_dot',
+              'Living Room': 'media_player.living_room',
+              'Bedroom': 'media_player.bedroom_tv',
+              'Kitchen': 'media_player.kitchen_echo_show',
+              'Bar': 'media_player.bar_echo'
+            } %}
+            {{ m.get(zone_eff, 'media_player.core') }}
+          vol_eff: >-
+            {% if volume is defined and volume is not none %}
+              {{ volume | float }}
+            {% else %}
+              {{ states('input_number.music_volume') | float(0.35) }}
+            {% endif %}
+          phrase: >-
+            {% if provider_eff in ['Default', ''] %}
+              {{ search_eff }}
+            {% else %}
+              {{ search_eff ~ ' on ' ~ provider_eff }}
+            {% endif %}
+
+      - condition: template
+        value_template: "{{ search_eff | length > 0 }}"
+
+      - service: media_player.volume_set
+        target:
+          entity_id: "{{ target_player }}"
+        data:
+          volume_level: "{{ vol_eff }}"
+
+      - service: media_player.play_media
+        target:
+          entity_id: "{{ target_player }}"
+        data:
+          media:
+            media_content_id: "{{ 'Play ' ~ phrase }}"
+            media_content_type: custom
+            metadata: {}
+
+  music_pause:
+    alias: Music - Pause
+    mode: queued
+    sequence:
+      - service: media_player.media_pause
+        target:
+          entity_id: "{{ states('sensor.music_target_media_player') }}"
+
+  music_stop:
+    alias: Music - Stop
+    mode: queued
+    sequence:
+      - service: media_player.media_stop
+        target:
+          entity_id: "{{ states('sensor.music_target_media_player') }}"
+
+  music_next:
+    alias: Music - Next
+    mode: queued
+    sequence:
+      - service: media_player.media_next_track
+        target:
+          entity_id: "{{ states('sensor.music_target_media_player') }}"
+
+  music_previous:
+    alias: Music - Previous
+    mode: queued
+    sequence:
+      - service: media_player.media_previous_track
+        target:
+          entity_id: "{{ states('sensor.music_target_media_player') }}"
+
+  core_set_volume:
+    alias: Core - Set volume
+    mode: restart
+    fields:
+      volume:
+        description: Volume 0.0 to 1.0
+    sequence:
+      - service: media_player.volume_set
+        target:
+          entity_id: group.core_speakers
+        data:
+          volume_level: "{{ volume | float }}"
+
+automation:
+  - id: media_buttons_to_scripts
+    alias: Media buttons → scripts
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id:
+          - input_button.music_play
+          - input_button.music_pause
+          - input_button.music_stop
+          - input_button.music_next
+          - input_button.music_previous
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'input_button.music_play' }}"
+            sequence:
+              - service: script.music_play
+                data:
+                  search: "{{ states('input_text.music_search') }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'input_button.music_pause' }}"
+            sequence:
+              - service: script.music_pause
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'input_button.music_stop' }}"
+            sequence:
+              - service: script.music_stop
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'input_button.music_next' }}"
+            sequence:
+              - service: script.music_next
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'input_button.music_previous' }}"
+            sequence:
+              - service: script.music_previous

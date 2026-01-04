@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "minor_version": 7,
+  "key": "backup",
+  "data": {
+    "backups": [
+      {
+        "backup_id": "e6b00cba",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      },
+      {
+        "backup_id": "396eb2d9",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      },
+      {
+        "backup_id": "58cdc5cc",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      },
+      {
+        "backup_id": "5637828f",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      },
+      {
+        "backup_id": "1611b6ab",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      },
+      {
+        "backup_id": "771e0008",
+        "failed_addons": [],
+        "failed_agent_ids": [],
+        "failed_folders": []
+      }
+    ],
+    "config": {
+      "agents": {},
+      "automatic_backups_configured": true,
+      "create_backup": {
+        "agent_ids": [
+          "hassio.local",
+          "cloud.cloud"
+        ],
+        "include_addons": [],
+        "include_all_addons": true,
+        "include_database": true,
+        "include_folders": null,
+        "name": null,
+        "password": "PPYA-27IH-2S0C-4BOI-F84Q-RJAJ-MK2Q"
+      },
+      "last_attempted_automatic_backup": "2026-01-03T05:02:08.002007-06:00",
+      "last_completed_automatic_backup": "2026-01-03T05:07:15.728513-06:00",
+      "retention": {
+        "copies": 3,
+        "days": null
+      },
+      "schedule": {
+        "days": [],
+        "recurrence": "daily",
+        "time": null
+      }
+    }
+  }
+}

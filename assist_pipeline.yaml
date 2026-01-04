@@ -1,0 +1,4 @@
+language: en-US
+stt_engine: default
+tts_engine: google_translate
+conversation_engine: default
