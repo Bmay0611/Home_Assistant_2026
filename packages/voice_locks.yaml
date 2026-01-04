@@ -1,4 +1,4 @@
-input_boolean:
+﻿input_boolean:
   unlock_pending:
     name: Unlock pending (voice confirm)
     icon: mdi:lock-open-alert
@@ -11,7 +11,7 @@ script:
       - service: lock.lock
         target:
           entity_id: group.all_locks
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Locking all doors."
 
@@ -22,7 +22,7 @@ script:
       - service: input_boolean.turn_on
         target:
           entity_id: input_boolean.unlock_pending
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Unlock requested. Say confirm unlock within 30 seconds to proceed."
 
@@ -39,7 +39,7 @@ script:
       - service: lock.unlock
         target:
           entity_id: group.all_locks
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Unlocking all doors."
 
@@ -50,7 +50,7 @@ script:
       - service: input_boolean.turn_off
         target:
           entity_id: input_boolean.unlock_pending
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Unlock cancelled."
 
@@ -67,6 +67,6 @@ automation:
       - service: input_boolean.turn_off
         target:
           entity_id: input_boolean.unlock_pending
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Unlock request expired."

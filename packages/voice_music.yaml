@@ -13,7 +13,7 @@
         data:
           query: "{{ music if music is defined and music else 'music' }}"
           where: "{{ area if area is defined and area else 'Main' }}"
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: >-
             I will play {{ music if music is defined and music else 'music' }}
@@ -93,7 +93,7 @@ script:
             {% else %}
               No music is currently active.
             {% endif %}
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "{{ msg }}"
 
@@ -109,7 +109,7 @@ script:
           entity_id: input_number.music_target_volume
         data:
           value: "{{ newv }}"
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Turning it down."
 
@@ -125,7 +125,7 @@ script:
           entity_id: input_number.music_target_volume
         data:
           value: "{{ newv }}"
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "Turning it up."
 
@@ -158,7 +158,7 @@ script:
                     {% else %}
                       {{ r }}
                     {% endif %}
-      - service: tts.speak
+      - service: script.voice_reply
         data:
           message: "{{ msg }}"
 intent_script:
@@ -169,7 +169,6 @@ intent_script:
       - choose:
           - conditions:
               - condition: state
-                entity_id: media_player.living_room
                 state: "unavailable"
             sequence:
               - service: script.speak_on_sonos
@@ -178,12 +177,10 @@ intent_script:
         default:
           - service: media_player.volume_mute
             target:
-              entity_id: media_player.living_room
             data:
               is_volume_muted: false
           - service: media_player.media_play
             target:
-              entity_id: media_player.living_room
           - service: script.speak_on_sonos
             data:
               message: "Playing music in the living room."
