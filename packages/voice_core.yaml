@@ -190,3 +190,20 @@ automation:
 # If you'd like, I can also propose a follow-up file that replaces google_translate
 # fallback with piper or ElevenLabs and updates your other scripts to call
 # script.voice_reply instead of calling tts directly.
+
+# ---- merged from 67_voicepe_force_mute.yaml ----
+automation:
+  - id: voicepe_force_mute
+    alias: Voice PE - Force mute speaker
+    mode: restart
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: state
+        entity_id: media_player.home_assistant_voice_0994f1_media_player
+    action:
+      - service: media_player.volume_set
+        target:
+          entity_id: media_player.home_assistant_voice_0994f1_media_player
+        data:
+          volume_level: 0.0
