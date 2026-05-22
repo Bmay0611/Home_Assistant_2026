@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ matter.label }} - Document Generator{% endblock %}
+{% block content %}
+  <h1>{{ matter.label }}</h1>
+  <p class="lead">{{ matter.description }}</p>
+
+  <form method="post" action="{{ url_for('new_document', matter_key=matter_key) }}">
+    {% set ns = namespace(current="") %}
+    {% for field in matter.fields %}
+      {% if field.section and field.section != ns.current %}
+        {% set ns.current = field.section %}
+        <h2 class="section">{{ field.section }}</h2>
+      {% endif %}
+      <div class="field">
+        <label for="{{ field.name }}">
+          {{ field.label }}{% if field.required %} <span class="req">*</span>{% endif %}
+        </label>
+        {% if field.type == "textarea" %}
+          <textarea id="{{ field.name }}" name="{{ field.name }}" rows="3"
+            {% if field.required %}required{% endif %}>{{ values.get(field.name, "") }}</textarea>
+        {% else %}
+          <input type="{{ field.type }}" id="{{ field.name }}" name="{{ field.name }}"
+            value="{{ values.get(field.name, '') }}"
+            {% if field.required %}required{% endif %}>
+        {% endif %}
+        {% if field.help %}<small class="help">{{ field.help }}</small>{% endif %}
+      </div>
+    {% endfor %}
+
+    <div class="actions">
+      <button type="submit">Generate .docx</button>
+      <a class="btn-secondary" href="{{ url_for('index') }}">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

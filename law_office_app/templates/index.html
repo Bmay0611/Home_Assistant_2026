@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Select a Matter Type</h1>
+  <p class="lead">Choose a document to generate. You'll enter the case details on the next screen.</p>
+
+  <div class="cards">
+    {% for key, matter in matters %}
+      <a class="card" href="{{ url_for('new_document', matter_key=key) }}">
+        <h2>{{ matter.label }}</h2>
+        <p>{{ matter.description }}</p>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

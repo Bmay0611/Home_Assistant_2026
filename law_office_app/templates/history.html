@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}History - Document Generator{% endblock %}
+{% block content %}
+  <h1>Generated Documents</h1>
+  {% if submissions %}
+    <table class="history">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Matter Type</th>
+          <th>Client</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in submissions %}
+          <tr>
+            <td>{{ s.created_at }}</td>
+            <td>{{ labels.get(s.matter_type, s.matter_type) }}</td>
+            <td>{{ s.client_name }}</td>
+            <td><a href="{{ url_for('download', filename=s.output_filename) }}">Download</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No documents generated yet. <a href="{{ url_for('index') }}">Create one</a>.</p>
+  {% endif %}
+{% endblock %}

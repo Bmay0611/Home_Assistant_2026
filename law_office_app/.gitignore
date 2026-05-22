@@ -1,0 +1,12 @@
+# Local data and generated documents -- never commit client data.
+data/
+generated/*.docx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
